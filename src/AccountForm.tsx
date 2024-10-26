@@ -17,7 +17,7 @@ export function AccountForm(){
             <label>Username</label>
             <input 
                 required  
-                type="number"
+                type="text"
             />
 
             <label>Password</label>
