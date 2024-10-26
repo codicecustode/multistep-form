@@ -1,6 +1,7 @@
+import { FormWrapper } from "./FormWrapper"
 export function AccountForm(){
     return(
-        <>
+        <FormWrapper title="Account details">
             <label>Email</label>
             <input 
                 autoFocus 
@@ -25,7 +26,7 @@ export function AccountForm(){
                 required 
                 type="text"
             />
-        </>
+        </FormWrapper>
     )
     
 }

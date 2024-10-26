@@ -1,6 +1,7 @@
+import { FormWrapper } from "./FormWrapper"
 export function UserForm(){
     return(
-        <>
+        <FormWrapper title="User Details">
             <label>First Name</label>
             <input 
                 autoFocus 
@@ -20,6 +21,6 @@ export function UserForm(){
                 min={1} 
                 type="number"
             />
-        </>
+        </FormWrapper>
     )
 }
