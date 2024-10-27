@@ -39,7 +39,7 @@ function App() {
     setData((prev) =>{
       return {
         ...prev,
-        ...data
+        ...fields
       }
     })
   }
