@@ -59,7 +59,8 @@ function App() {
 
   function handleSubmit(e: FormEvent){
     e.preventDefault()
-    next()
+    if( !isLastStep ) return next()
+    alert(`form submitted  ${JSON.stringify(INITIAL_DATA)}`)
   }
   return (
     <div style={{
@@ -69,7 +70,7 @@ function App() {
       padding: "2rem",
       margin: "1rem",
       borderRadius: ".5rem",
-      fontFamily: "Arial"
+      fontFamily: "Arial",
     }}>
       <form onSubmit = {handleSubmit}>
         <div style={{
