@@ -1,5 +1,10 @@
 import { FormWrapper } from "./FormWrapper"
-export function UserForm(){
+type UserFormProps = {
+    firstname: string,
+    lastname: string,
+    age: string
+}
+export function UserForm({firstname, lastname, age}: UserFormProps){
     return(
         <FormWrapper title="User Details">
             <label>First Name</label>
@@ -7,12 +12,14 @@ export function UserForm(){
                 autoFocus 
                 required 
                 type="text"
+                value = {firstname}
             />
 
             <label>Last Name</label>
             <input 
                 required 
                 type="text"
+                value = {lastname}
             />
 
             <label>Age</label>
@@ -20,6 +27,7 @@ export function UserForm(){
                 required 
                 min={1} 
                 type="number"
+                value = {age}
             />
         </FormWrapper>
     )
