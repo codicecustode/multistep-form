@@ -17,6 +17,7 @@ type FormData = {
   password: string,
   Email: string
 }
+
 const INITIAL_DATA: FormData = {
   firstname: "",
   lastname: "",
@@ -34,6 +35,15 @@ const INITIAL_DATA: FormData = {
 function App() {
   const [data, setData] = useState(INITIAL_DATA)
 
+  function updatefields(fields : Partial<FormData>){
+    setData((prev) =>{
+      return {
+        ...prev,
+        ...data
+      }
+    })
+  }
+
   const { 
     currentFormIndex,
     isFirstStep,
@@ -42,9 +52,9 @@ function App() {
     back,
     next 
   } = useMultistepForm([
-        <UserForm {...data}/>,
-        <AddressForm {...data}/>,
-        <AccountForm {...data}/>
+        <UserForm {...data} updatefields={updatefields}/>,
+        <AddressForm {...data} updatefields={updatefields}/>,
+        <AccountForm {...data} updatefields={updatefields}/>
       ])
 
   function handleSubmit(e: FormEvent){
