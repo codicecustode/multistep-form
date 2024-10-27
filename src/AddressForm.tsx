@@ -1,11 +1,14 @@
 import { FormWrapper } from "./FormWrapper"
-type AddressFromProps = {
+type AddressData = {
     city: string,
     district: string,
     zipcode: string,
     state: string
 }
-export function AddressForm({city, district, zipcode, state}: AddressFromProps){
+type AddressFromProps = AddressData & {
+    updatefields: (fields: Partial<AddressData>) => void
+}
+export function AddressForm({city, district, zipcode, state, updatefields}: AddressFromProps){
     return(
         <FormWrapper title="Address Details">
             <label>City</label>
@@ -14,6 +17,7 @@ export function AddressForm({city, district, zipcode, state}: AddressFromProps){
                 required 
                 type="text"
                 value = {city}
+                onChange = {(e) => updatefields({ city: e.target.value })}
             />
 
             <label>District</label>
@@ -21,6 +25,7 @@ export function AddressForm({city, district, zipcode, state}: AddressFromProps){
                 required 
                 type="text"
                 value = {district}
+                onChange = {(e) => updatefields({ district: e.target.value })}
             />
 
             <label>Zip Code</label>
@@ -28,6 +33,7 @@ export function AddressForm({city, district, zipcode, state}: AddressFromProps){
                 required  
                 type="number"
                 value = {zipcode}
+                onChange = {(e) => updatefields({ zipcode: e.target.value })}
             />
 
             <label>State</label>
@@ -35,6 +41,7 @@ export function AddressForm({city, district, zipcode, state}: AddressFromProps){
                 required 
                 type="text"
                 value = {state}
+                onChange = {(e) => updatefields({ state: e.target.value })}
             />
         </FormWrapper>
     )

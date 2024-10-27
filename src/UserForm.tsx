@@ -1,10 +1,13 @@
 import { FormWrapper } from "./FormWrapper"
-type UserFormProps = {
+type UserData = {
     firstname: string,
     lastname: string,
     age: string
+} 
+type UserFormProps = UserData & {
+    updatefields: (fields: Partial<UserData>) => void
 }
-export function UserForm({firstname, lastname, age}: UserFormProps){
+export function UserForm({firstname, lastname, age, updatefields}: UserFormProps){
     return(
         <FormWrapper title="User Details">
             <label>First Name</label>
@@ -12,22 +15,23 @@ export function UserForm({firstname, lastname, age}: UserFormProps){
                 autoFocus 
                 required 
                 type="text"
-                value = {firstname}
+                value={firstname}
+                onChange={(e) => updatefields({ firstname: e.target.value })}
             />
 
             <label>Last Name</label>
             <input 
                 required 
-                type="text"
-                value = {lastname}
+                value={lastname}
+                onChange={(e) => updatefields({ lastname: e.target.value })}
             />
 
             <label>Age</label>
             <input 
                 required 
-                min={1} 
+                value={age}
+                onChange={(e) => updatefields({ age: e.target.value })}
                 type="number"
-                value = {age}
             />
         </FormWrapper>
     )
